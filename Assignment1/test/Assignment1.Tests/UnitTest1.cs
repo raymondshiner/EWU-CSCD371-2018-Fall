@@ -4,31 +4,41 @@ using System;
 namespace Assignment1.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class TestInputOutput
     {
         [TestMethod]
-        public void TestInputOutput()
+        public void TestIOStringsVariableInput()
         {
             String name = "Raymond";
             String expectedOutput = $@">>Hello, what is your name?
 <<{name}
->>Hello {name}!";
+>>Hello {name}!
+>>Press any key to continue . . .";
 
             IntelliTect.TestTools.Console.ConsoleAssert.Expect(expectedOutput, Assignment1.Program.Main);
         }
 
-    }
-    /*
-    [TestClass]
-    public class UnitTest2
-    {
         [TestMethod]
-        public void TestPressKeyContinue()
+        public void TestIOStringsSteveInput()
         {
-            String expectedOutput = "Press any key to continue . . .";
+            String expectedOutput = $@">>Hello, what is your name?
+<<Steve
+>>Hello Steve!
+>>Press any key to continue . . .";
+
+            IntelliTect.TestTools.Console.ConsoleAssert.Expect(expectedOutput, Assignment1.Program.Main);
+        }
+
+        [TestMethod]
+        public void TestIOStringsJessInput()
+        {
+            String expectedOutput = $@">>Hello, what is your name?
+<<Jess
+>>Hello Jess!
+>>Press any key to continue . . .";
 
             IntelliTect.TestTools.Console.ConsoleAssert.Expect(expectedOutput, Assignment1.Program.Main);
         }
     }
-    */
+    
 }

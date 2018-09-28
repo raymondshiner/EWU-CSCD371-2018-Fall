@@ -10,10 +10,10 @@ namespace Assignment1
             String name = Console.ReadLine();
 
             Console.WriteLine($"Hello {name}!");
-            /*
+            
             Console.Write("Press any key to continue . . .");
             Console.Read();
-            */
+            
         }
     }
 }
