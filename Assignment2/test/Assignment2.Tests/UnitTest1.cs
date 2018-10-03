@@ -8,6 +8,7 @@ namespace Assignment2.Tests
         [TestMethod]
         public void TestMethod1()
         {
+            
         }
     }
 }
