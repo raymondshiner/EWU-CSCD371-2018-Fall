@@ -2,7 +2,7 @@
 
 namespace Assignment2
 {
-    class Program
+    public class Program
     {
         public static void Main(string[] args)
         {
@@ -12,7 +12,9 @@ namespace Assignment2
 
             string[] array;
 
-            if (input.Contains('+'))
+
+
+            if (input.Contains('+')) //addition
             {
                 array = input.Split('+');
 
@@ -24,19 +26,10 @@ namespace Assignment2
                 Console.WriteLine("{0}+{1} = {2}", num1, num2, res);
             }
 
-            else if (input.Contains('-'))
-            {
-                array = input.Split('-');
 
-                int.TryParse(array[0], out int num1);
-                int.TryParse(array[1], out int num2);
 
-                int res = num1 - num2;
 
-                Console.WriteLine("{0}-{1} = {2}", num1, num2, res);
-            }
-
-            else if (input.Contains('*'))
+            else if (input.Contains('*')) //multiplication
             {
                 array = input.Split('*');
 
@@ -48,7 +41,10 @@ namespace Assignment2
                 Console.WriteLine("{0}*{1} = {2}", num1, num2, res);
             }
 
-            else if (input.Contains('/'))
+
+
+
+            else if (input.Contains('/')) //division
             {
                 array = input.Split('/');
 
@@ -68,10 +64,72 @@ namespace Assignment2
                 }
             }
 
-            else
+
+
+
+            else if (input.Contains('-')) //subtraction - by checking for subtraction last it ensures that negatives work properly for all above calculations
+            {
+                array = input.Split('-');
+
+                int num1, num2;
+
+                if (array.Length == 2) // no negatives
+                {
+                    int.TryParse(array[0], out num1);
+                    int.TryParse(array[1], out num2);
+                }
+
+                else if (array.Length == 3) // 1 negative
+                {
+                    if (array[0].Equals(""))        //if array[0] is empty string then first num is negative - second num positive
+                    {                               //this happens because of way that split("-") works: "-2-3" --> { "", "2", "3" }
+
+                        int.TryParse(array[1], out num1);
+                        int.TryParse(array[2], out num2);
+
+                        num1 = num1 * (-1);         //make num1 negative
+                    }
+
+                    else                            // second num negative - first number postiive - this splits as such: "2--3" --> { "2", "", "3" }
+                    {
+                        int.TryParse(array[0], out num1);
+                        int.TryParse(array[2], out num2);
+
+                        num2 = num2 * (-1);         //make num2 negative
+                    }
+                }
+
+                else if (array.Length == 4) // both negative - splits as such: "-2--3" --> { "", "2", "", "3" }
+                {
+                    int.TryParse(array[1], out num1);
+                    int.TryParse(array[3], out num2);
+
+                    num1 = num1 * (-1);
+                    num2 = num2 * (-1);         //make both nums negative
+                }
+
+                else // user puts in more than 2 negative symbols
+                {
+                    Console.WriteLine("This program does not handle double negatives on numbers - returning 0");
+                    num1 = 0;
+                    num2 = 0;
+                }
+
+                int res = num1 - num2;
+
+                Console.WriteLine("{0}-{1} = {2}", num1, num2, res);
+            }
+
+
+
+
+            else //user doesnt input a math Symbol
             {
                 Console.WriteLine("ERROR - Please include an operator (+, -, *, /) in your input");
             }
+
+
+
 
             Console.Write("Press Enter to Exit Program . . .");
 
