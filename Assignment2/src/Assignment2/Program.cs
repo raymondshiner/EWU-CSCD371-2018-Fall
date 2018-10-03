@@ -71,7 +71,7 @@ namespace Assignment2
             {
                 array = input.Split('-');
 
-                int num1, num2;
+                int num1 = 0, num2 = 0;
 
                 if (array.Length == 2) // no negatives
                 {
@@ -106,13 +106,6 @@ namespace Assignment2
 
                     num1 = num1 * (-1);
                     num2 = num2 * (-1);         //make both nums negative
-                }
-
-                else // user puts in more than 2 negative symbols
-                {
-                    Console.WriteLine("This program does not handle double negatives on numbers - returning 0");
-                    num1 = 0;
-                    num2 = 0;
                 }
 
                 int res = num1 - num2;
