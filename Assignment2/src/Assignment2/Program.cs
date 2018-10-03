@@ -4,11 +4,16 @@ namespace Assignment2
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            int myInt = 42;
-            System.Int32 myOtherInt = 42;
-            WriteLine("Raymond");
+            var result = 1 / 0;
+
+
+            Console.WriteLine("Raymond");
+
+            Console.Write("Press enter to Continue . . .");
+            Console.Read();
         }
+        
     }
 }
