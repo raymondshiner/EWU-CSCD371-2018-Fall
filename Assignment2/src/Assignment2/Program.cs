@@ -73,6 +73,7 @@ namespace Assignment2
 
                 int num1 = 0, num2 = 0;
 
+
                 if (array.Length == 2) // no negatives
                 {
                     int.TryParse(array[0], out num1);

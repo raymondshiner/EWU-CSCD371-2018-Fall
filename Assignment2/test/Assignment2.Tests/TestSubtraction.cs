@@ -70,21 +70,6 @@ namespace Assignment2.Tests
 
             IntelliTect.TestTools.Console.ConsoleAssert.Expect(expectedOuput, Assignment2.Program.Main);
         }
-        /*
-        [TestMethod]
-        public void TestSubNeg2AndMinVal()
-        {
-            int num1 = -2;
-            int num2 = int.MinValue;
-            int res = num1 - num2;
-
-            string expectedOuput = $@">>Please enter a calculation to perform: <<{num1}-{num2}
->>{num1}-{num2} = {res}
->>Press Enter to Exit Program . . .";
-
-            IntelliTect.TestTools.Console.ConsoleAssert.Expect(expectedOuput, Assignment2.Program.Main);
-        }
-        */
 
         [TestMethod]
         public void TestSubNeg2AndMaxVal()
