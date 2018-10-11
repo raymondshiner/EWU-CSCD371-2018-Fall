@@ -61,7 +61,7 @@ namespace Assignment3
                 else // scissors
                 {
                     Console.WriteLine("Rock beats Scissors - Cpu Loses 20 life points");
-                    cpuLife = cpuLife - 15;
+                    cpuLife = cpuLife - 20;
                 }
             }
 
@@ -121,7 +121,7 @@ namespace Assignment3
 
         public static bool GoAgain()
         {
-            Console.Write("Would you like to go again?: ");
+            Console.Write("Would you like to go again? (y/n): ");
             string answer = Console.ReadLine();
 
             if (answer.Equals("y"))
