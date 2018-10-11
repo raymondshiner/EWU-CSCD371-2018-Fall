@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Assignment3
 {
-    class RoshamboMethods
+    public class RoshamboMethods
     {
         public static void PrintStatus(int cpuLife, int userLife)
         {
