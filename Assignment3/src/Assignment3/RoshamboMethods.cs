@@ -15,30 +15,36 @@ namespace Assignment3
 
         public static (string, string) GetThrows()
         {
-            Console.Write("What would you like to throw?: ");
-            string theirThrow = Console.ReadLine();
+            string userThrow = GetUserThrow();
 
-            string cpuThrow;
+            string cpuThrow = GetCpuThrow();
 
-            if (DateTime.Now.Millisecond % 3 == 0)
-            {
-                cpuThrow = "rock";
-            }
-
-            else if (DateTime.Now.Millisecond % 2 == 0)
-            {
-                cpuThrow = "paper";
-            }
-
-            else
-            {
-                cpuThrow = "scissors";
-            }
-
-            return (cpuThrow, theirThrow);
+            return (cpuThrow, userThrow);
         }
 
-        public static void PrintUpdatedScores(ref int cpuLife, ref int userLife, (string cpuThrow, string userThrow) throws)
+                private static string GetUserThrow()
+                {
+                    Console.Write("What would you like to throw?: ");
+                    return Console.ReadLine();
+                }
+
+                private static string GetCpuThrow()
+                {
+
+                    if (DateTime.Now.Millisecond % 3 == 0)
+                    {
+                        return "rock";
+                    }
+
+                    else if (DateTime.Now.Millisecond % 2 == 0)
+                    {
+                        return "paper";
+                    }
+
+                    return "scissors";
+                }
+
+        public static void PrintThrowWinner(ref int cpuLife, ref int userLife, (string cpuThrow, string userThrow) throws)
         {
             Console.WriteLine();
             Console.WriteLine($"You threw - {throws.userThrow}");
@@ -60,7 +66,7 @@ namespace Assignment3
 
                 else // scissors
                 {
-                    Console.WriteLine("Rock beats Scissors - Cpu Loses 20 life points");
+                    Console.WriteLine("Rock beats Scissors - Cpu loses 20 life points");
                     cpuLife = cpuLife - 20;
                 }
             }

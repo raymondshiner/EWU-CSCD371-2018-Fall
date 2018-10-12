@@ -29,7 +29,7 @@ namespace Assignment3
 
                     (string cpuThrow, string userThrow) throws = RoshamboMethods.GetThrows();
 
-                    RoshamboMethods.PrintUpdatedScores(ref cpuLife, ref userLife, throws);
+                    RoshamboMethods.PrintThrowWinner(ref cpuLife, ref userLife, throws);
                 }
 
                 RoshamboMethods.PrintFinalScores(cpuLife, userLife);
