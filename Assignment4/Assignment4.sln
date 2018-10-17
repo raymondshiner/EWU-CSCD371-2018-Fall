@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9A45FCDE-4423-4222-8B83-FD0C45046925}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment4", "src\Assignment4\Assignment4.csproj", "{D6FE128E-34A4-468A-B31E-96AEAB8F50A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment4", "src\Assignment4\Assignment4.csproj", "{D6FE128E-34A4-468A-B31E-96AEAB8F50A8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{BA9232E2-F01C-4FD3-8F83-DC8C9FD0EC1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment4.Tests", "test\Assignment4.Tests\Assignment4.Tests.csproj", "{0FA98649-0CA6-4E32-8C01-5880755FD9EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment4.Tests", "test\Assignment4.Tests\Assignment4.Tests.csproj", "{0FA98649-0CA6-4E32-8C01-5880755FD9EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D6FE128E-34A4-468A-B31E-96AEAB8F50A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -49,8 +46,14 @@ Global
 		{0FA98649-0CA6-4E32-8C01-5880755FD9EA}.Release|x86.ActiveCfg = Release|Any CPU
 		{0FA98649-0CA6-4E32-8C01-5880755FD9EA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D6FE128E-34A4-468A-B31E-96AEAB8F50A8} = {9A45FCDE-4423-4222-8B83-FD0C45046925}
 		{0FA98649-0CA6-4E32-8C01-5880755FD9EA} = {BA9232E2-F01C-4FD3-8F83-DC8C9FD0EC1F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19F30632-5B67-4D17-8668-2CB51B9E599D}
 	EndGlobalSection
 EndGlobal
