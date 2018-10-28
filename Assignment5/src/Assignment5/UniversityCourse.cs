@@ -11,7 +11,7 @@
             set
             {
                 if (value < 1)
-                    _Credits = 0;
+                    _Credits = 1;
 
                 else if (value > 5)
                     _Credits = 5;
@@ -26,6 +26,21 @@
         {
             Credits = 5;
             Schedule = "TBD";
+        }
+
+        public UniversityCourse(string name, string location, string schedule, int credits)
+        {
+            if (name == null || name.Equals(""))
+                name = "Elective Course";
+            if (location == null || location.Equals(""))
+                location = "Eastern Washington University";
+            if (schedule == null || schedule.Equals(""))
+                schedule = "TBD";
+
+            Name = name;
+            Location = location;
+            Schedule = schedule;
+            Credits = credits;
         }
     }
 }
