@@ -27,7 +27,7 @@ namespace Assignment5
             Time = time;
         }
 
-        public void GetSummaryInformation()
+        public string GetSummaryInformation()
         {
             
         }

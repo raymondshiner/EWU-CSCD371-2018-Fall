@@ -4,7 +4,7 @@
     {
         public string Name { get; set; }
         public string Location { get; set; }
-        public static int InstantiationCount { get; set; }
+        public static int InstantiationCount { get; private set; }
 
         public Gathering()
         {
@@ -22,6 +22,11 @@
 
             Name = name;
             Location = location;
+        }
+
+        public static void ResetInstantiationCount()
+        {
+            InstantiationCount = 0;
         }
 
         public void GetSummaryInformation()

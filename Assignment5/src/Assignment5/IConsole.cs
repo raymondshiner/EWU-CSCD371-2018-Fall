@@ -2,7 +2,7 @@
 
 namespace Assignment5
 {
-    interface IConsole
+    public interface IConsole
     {
         void WriteLine(string str);
     }

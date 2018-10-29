@@ -5,11 +5,15 @@ namespace Assignment5.Tests
     [TestClass]
     public class GatheringTests
     {
+        [TestInitialize]
+        public void SetupTests()
+        {
+            Gathering.ResetInstantiationCount();
+        }
+
         [TestMethod]
         public void Gathering_Create3DefaultGatherings_InstantiationCountIs3()
         {
-            Gathering.InstantiationCount = 0;
-
             var myGathering = new Gathering();
             var myGathering2 = new Gathering();
             var myGathering3 = new Gathering();
@@ -71,6 +75,16 @@ namespace Assignment5.Tests
 
             Assert.AreEqual("Thing", myGathering.Name);
             Assert.AreEqual("MyHouse", myGathering.Location);
+        }
+
+        public void Gathering_IsEventAGathering_ReturnTrue()
+        {
+            Assert.IsInstanceOfType(new Event(), typeof(Gathering));
+        }
+        
+        public void Gathering_IsUniversityCourseAGathering_ReturnTrue()
+        {
+            Assert.IsInstanceOfType(new UniversityCourse(), typeof(Gathering));
         }
     }
 }

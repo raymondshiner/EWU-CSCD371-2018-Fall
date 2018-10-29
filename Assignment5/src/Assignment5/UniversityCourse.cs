@@ -7,7 +7,7 @@
         private int _Credits;
         public int Credits
         {
-            get { return _Credits; }
+            get => _Credits;
             set
             {
                 if (value < 1)
@@ -43,10 +43,9 @@
             Credits = credits;
         }
 
-
-        public void GetSummaryInformation()
+        public string GetSummaryInformation()
         {
-
+            
         }
     }
 }
