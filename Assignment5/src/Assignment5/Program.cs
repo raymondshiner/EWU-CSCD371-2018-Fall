@@ -25,12 +25,20 @@ namespace Assignment5
                 string str = Console.ReadLine();
                 Int32.TryParse(str, out choice);
 
-                if (choice == 1)
-                    CreateEvent(ref myList, console);
-                else if (choice == 2)
-                    PrintList(ref myList, console);
-                else if (choice != 3)
-                    console.WriteLine("ERROR - Please enter a valid number");
+                switch (choice)
+                {
+                    case 1:
+                        CreateEvent(ref myList, console);
+                        break;
+                    case 2:
+                        PrintList(ref myList, console);
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        console.WriteLine("ERROR - Please enter a valid number");
+                        break;
+                }
 
             } while (choice != 3);
         }

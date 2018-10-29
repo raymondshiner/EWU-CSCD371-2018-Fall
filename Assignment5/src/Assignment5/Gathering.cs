@@ -1,6 +1,6 @@
 ﻿namespace Assignment5
 {
-    public abstract class Gathering
+    public class Gathering
     {
         public string Name { get; set; }
         public string Location { get; set; }
@@ -24,6 +24,9 @@
             Location = location;
         }
 
-        public abstract void GetSummaryInformation();
+        public void GetSummaryInformation()
+        {
+
+        }
     }
 }

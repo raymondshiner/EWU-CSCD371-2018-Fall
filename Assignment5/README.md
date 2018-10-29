@@ -23,11 +23,11 @@ This assignment will use some of the code files you created in Assignment 4. For
     * You will need to create two implementations of this interface. One for the main console app, that forwards calls to `System.Console` and one in the unit test project to verify that the correct calls were made.
     * You will need to unit test your implementation of `IConsole` that is in the main project. You will want to consider using the IntelliTect.TestTools.Console.ConsoleAssert class to assist with this.
     * Use the implementation of `IConsole` in the unit test project to unit test methods use the console.
-* Create an `IEvent` interface and implement it on both the `UniversityCourse` and `Event` classes (or the equivelent classes you created in assignment 4). The exact members of this interface are up to you.
+* Create an `IEvent` interface and implement it on both the `UniversityCourse` and `Event` classes (or the equivalent classes you created in assignment 4). The exact members of this interface are up to you.
 * Create an extension method for the `IEvent` interface to return a calculated value
 * Add unit tests for type casting using `is`, `as`, and direct cast.
 
-## Coding Guidlines
+## Coding Guidelines
 
 * **All production code should be unit tested.  And, although we can't verify it, you are encouraged to do so following a TDD process.**
 * **All projects should have project properties set so that warnings are reported as errors by the compiler**

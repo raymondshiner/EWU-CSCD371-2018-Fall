@@ -42,5 +42,11 @@
             Schedule = schedule;
             Credits = credits;
         }
+
+
+        public void GetSummaryInformation()
+        {
+
+        }
     }
 }

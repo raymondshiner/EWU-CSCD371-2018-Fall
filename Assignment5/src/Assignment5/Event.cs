@@ -26,6 +26,11 @@ namespace Assignment5
             this.Location = location;
             Time = time;
         }
+
+        public void GetSummaryInformation()
+        {
+            
+        }
     }
 
 
