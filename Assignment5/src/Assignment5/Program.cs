@@ -27,6 +27,7 @@ Choice: ", console);
                         myList.Add(myGathering);
                         break;
                     case 2:
+                        PrintNewLine(console);
                         PrintList(myList, console);
                         break;
                     case 3:
@@ -38,17 +39,23 @@ Choice: ", console);
             } while (choice != 3);
         }
 
-        public static void PrintList(List<Gathering> myList, MyConsole console)
+        public static void PrintList(List<Gathering> myList, IConsole console)
         {
-            foreach (var x in myList)
+            if (myList.Count == 0)
+                console.WriteLine("No Events or University Courses Created");
+
+            else
             {
-                console.WriteLine("");
-                console.WriteLine(x.GetSummaryInformation());
+                foreach (var x in myList)
+                {
+                    console.WriteLine(x.GetSummaryInformation());
+                }
             }
+
         }
 
 
-        public static Gathering CreateGathering(MyConsole console)
+        public static Gathering CreateGathering(IConsole console)
         {
             var choice = GetUserChoiceFromTwoChoices("Create a University Course", "Create a One-Time Event", console);
             var type = choice == 1 ? "University Course" : "Event";
@@ -79,15 +86,14 @@ Choice: ", console);
 
 
 
-        public static string GetStringFromUser(string prompt, MyConsole console)
+        public static string GetStringFromUser(string prompt, IConsole console)
         {
             console.WriteLine(prompt);
             string str = console.ReadLine();
-            console.WriteLine("");
             return str;
         }
 
-        public static int GetIntFromUser(string prompt, MyConsole console)
+        public static int GetIntFromUser(string prompt, IConsole console)
         {
             console.Write(prompt);
             string str = console.ReadLine();
@@ -96,7 +102,7 @@ Choice: ", console);
             return credits;
         }
 
-        public static int GetUserChoiceFromTwoChoices(string choice1, string choice2, MyConsole console)
+        public static int GetUserChoiceFromTwoChoices(string choice1, string choice2, IConsole console)
         {
             int choice;
 
@@ -115,8 +121,12 @@ Choice: ", console);
 
             } while (choice != 1 && choice != 2);
 
-            console.WriteLine("");
             return choice;
+        }
+
+        public static void PrintNewLine(IConsole console)
+        {
+            console.WriteLine("");
         }
     }
 }
