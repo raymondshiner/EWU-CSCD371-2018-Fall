@@ -128,5 +128,10 @@ Choice: ", console);
         {
             console.WriteLine("");
         }
+
+        public static void DoStuffOnIEvent(IEvent someEvent)
+        {
+            
+        }
     }
 }

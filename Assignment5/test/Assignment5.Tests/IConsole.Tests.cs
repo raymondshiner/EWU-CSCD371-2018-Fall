@@ -25,5 +25,17 @@ namespace Assignment5.Tests
 
             Assert.AreEqual(console.LastWrittenLine, "This is a String2");
         }
+
+        [TestMethod]
+        public void IEvent_EventIsIEvent_ReturnTrue()
+        {
+            Assert.IsTrue(new Event() is IEvent);
+        }
+
+        [TestMethod]
+        public void IEvent_UniversityCourseIsIEvent_ReturnTrue()
+        {
+            Assert.IsTrue(new UniversityCourse() is IEvent);
+        }
     }
 }

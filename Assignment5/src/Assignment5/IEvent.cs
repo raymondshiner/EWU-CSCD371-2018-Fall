@@ -4,6 +4,15 @@ namespace Assignment5
 {
     public interface IEvent
     {
-        int InstantiationCount { get; }
+        string Name { get; set; }
+    }
+
+    public static class IEventExtensions
+    {
+        public static string GetLengthOfName(this IEvent myEvent)
+        {
+            int num = myEvent.Name.Length;
+            return $"Name is {num} Characters Long";
+        }
     }
 }

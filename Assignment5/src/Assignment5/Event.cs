@@ -3,7 +3,7 @@ using System;
 
 namespace Assignment5
 {
-    public class Event : Gathering
+    public class Event : Gathering 
     {
         public string Title => $"{Name}@{Location}";
 
@@ -38,6 +38,7 @@ namespace Assignment5
                    $"Time: {Time}" + Environment.NewLine +
                    $"Title: {Title}";
         }
+        
     }
 
 
