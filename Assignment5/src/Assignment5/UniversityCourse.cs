@@ -1,4 +1,6 @@
-﻿namespace Assignment5
+﻿using System;
+
+namespace Assignment5
 {
     public class UniversityCourse: Gathering
     {
@@ -22,8 +24,11 @@
         }
 
         public UniversityCourse()
-           : base("Elective Course", "Eastern Washington University")
         {
+            Name = "Elective Course";
+            Location = "Eastern Washington University";
+
+
             Credits = 5;
             Schedule = "TBD";
         }
@@ -43,9 +48,13 @@
             Credits = credits;
         }
 
-        public string GetSummaryInformation()
-        {
-            
+        public override string GetSummaryInformation()
+        { 
+            return @"University Course -" + Environment.NewLine + 
+                   $"Name: {Name}" + Environment.NewLine +
+                   $"Location: {Location}" + Environment.NewLine +
+                   $"Schedule: {Schedule}" + Environment.NewLine +
+                   $"Credits: {Credits}";
         }
     }
 }

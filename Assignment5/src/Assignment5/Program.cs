@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using Assignment5;
 
 namespace Assignment5
-{ 
-    class Program
+{
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -16,22 +14,20 @@ namespace Assignment5
 
             do
             {
-                console.WriteLine("");
-                console.WriteLine("1) Create and Event");
-                console.WriteLine("2) List Created Events");
-                console.WriteLine("3) Quit");
-                console.Write("Choice: ");
-
-                string str = Console.ReadLine();
-                Int32.TryParse(str, out choice);
+                choice = GetIntFromUser($@"
+1) Create and Event
+2) List Created Events
+3) Quit
+Choice: ", console);
 
                 switch (choice)
                 {
                     case 1:
-                        CreateEvent(ref myList, console);
+                        Gathering myGathering = CreateGathering(console);
+                        myList.Add(myGathering);
                         break;
                     case 2:
-                        PrintList(ref myList, console);
+                        PrintList(myList, console);
                         break;
                     case 3:
                         break;
@@ -39,32 +35,79 @@ namespace Assignment5
                         console.WriteLine("ERROR - Please enter a valid number");
                         break;
                 }
-
             } while (choice != 3);
         }
 
-        private static void PrintList(ref List<Gathering> myList, MyConsole console)
+        public static void PrintList(List<Gathering> myList, MyConsole console)
         {
             foreach (var x in myList)
             {
-                console.WriteLine(x.ToString());
+                console.WriteLine("");
+                console.WriteLine(x.GetSummaryInformation());
             }
-
-            console.WriteLine(myList.ToString());
         }
 
-        private static void CreateEvent(ref List<Gathering> myList, MyConsole console)
+
+        public static Gathering CreateGathering(MyConsole console)
+        {
+            var choice = GetUserChoiceFromTwoChoices("Create a University Course", "Create a One-Time Event", console);
+            var type = choice == 1 ? "University Course" : "Event";
+            var name = GetStringFromUser($"Please enter a Name for your {type}: ", console);
+            var location = GetStringFromUser($"Please enter a location for your {type}: ", console);
+            Gathering myGathering;
+
+            switch (choice)
+            {
+                case 1: // course
+                    string schedule =
+                        GetStringFromUser("Please enter the Schedule for your University Course: ",
+                            console);
+                    int credits =
+                        GetIntFromUser(
+                            "Please enter the number of Credits for your University Course (1-5 Credits only): ",
+                            console);
+                    myGathering = new UniversityCourse(name, location, schedule, credits);
+                    break;
+                default: //event
+                    var time = GetStringFromUser("Please enter a Time for your Event", console);
+                    myGathering = new Event(name, location, time);
+                    break;
+            }
+
+            return myGathering;
+        }
+
+
+
+        public static string GetStringFromUser(string prompt, MyConsole console)
+        {
+            console.WriteLine(prompt);
+            string str = console.ReadLine();
+            console.WriteLine("");
+            return str;
+        }
+
+        public static int GetIntFromUser(string prompt, MyConsole console)
+        {
+            console.Write(prompt);
+            string str = console.ReadLine();
+            int credits;
+            Int32.TryParse(str, out credits);
+            return credits;
+        }
+
+        public static int GetUserChoiceFromTwoChoices(string choice1, string choice2, MyConsole console)
         {
             int choice;
 
             do
             {
                 console.WriteLine("Please Select a Choice: ");
-                console.WriteLine("1) Create a University Course");
-                console.WriteLine("2) Create a One-Time Event");
+                console.WriteLine($"1) {choice1}");
+                console.WriteLine($"2) {choice2}");
                 console.Write("Choice: ");
 
-                string str = Console.ReadLine();
+                string str = console.ReadLine();
                 Int32.TryParse(str, out choice);
 
                 if (choice != 1 && choice != 2)
@@ -72,50 +115,8 @@ namespace Assignment5
 
             } while (choice != 1 && choice != 2);
 
-            string type;
-
-            if (choice == 1)
-                type = "University Course";
-            else
-                type = "Event";
-
-            console.Write($"Please enter a Name for your {type}: ");
-            string name = Console.ReadLine();
             console.WriteLine("");
-
-            console.Write($"Please enter a location for your {type}: ");
-            string location = Console.ReadLine();
-            console.WriteLine("");
-
-            if (choice == 1) //univeristy course
-            {
-                console.Write("Please enter the Schedule for your University Course");
-                string schedule = Console.ReadLine();
-                console.WriteLine("");
-
-                int credits;
-                do
-                {
-                    console.Write("Please enter the number of Credits for your University Course (1-5 Credits only): ");
-                    string str = Console.ReadLine();
-                    Int32.TryParse(str, out credits);
-                    console.WriteLine("");
-                    
-                } while (credits > 5 || credits < 1);
-
-                UniversityCourse newCourse = new UniversityCourse(name, location, schedule, credits);
-                myList.Add(newCourse);
-            }
-
-            else // choice == 2
-            {
-                console.Write("Please enter the time for your Event");
-                string time = Console.ReadLine();
-                console.WriteLine("");
-
-                Event newEvent = new Event(name, location, time);
-                myList.Add(newEvent);
-            }
-        }//end create Event
+            return choice;
+        }
     }
 }

@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Assignment5
 {
     public class Event : Gathering
@@ -8,8 +10,9 @@ namespace Assignment5
         public string Time { get; set; } 
 
         public Event()
-            : base("Event", "Seattle")
         {
+            Name = "Event";
+            Location = "Seattle";
             Time = "12:00pm - 1:00pm";
         }
 
@@ -27,9 +30,13 @@ namespace Assignment5
             Time = time;
         }
 
-        public string GetSummaryInformation()
+        public override string GetSummaryInformation()
         {
-            
+            return @"Event -" + Environment.NewLine +
+                   $"Name: {Name}" + Environment.NewLine +
+                   $"Location: {Location}" + Environment.NewLine +
+                   $"Time: {Time}" + Environment.NewLine +
+                   $"Title: {Title}";
         }
     }
 
