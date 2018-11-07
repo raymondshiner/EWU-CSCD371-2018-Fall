@@ -28,6 +28,17 @@ namespace Assignment6.Tests
         }
 
         [TestMethod]
+        public void PassClassToMethod_ChangePropertyValue_OriginalClassChanged()
+        {
+            MyClass myClass = new MyClass();
+            myClass.ClassInt = 10;
+
+            MyClass.ChangeClassIntToZero(myClass);
+
+            Assert.AreEqual(myClass.ClassInt, 0);
+        }
+
+        [TestMethod]
         public void PassClassToMethod_ChangePropertyValue_OriginalClassUnchanged()
         {
 
