@@ -5,7 +5,7 @@ namespace Assignment6
     public class MyEnums
     {
         [Flags]
-        public enum WeekDays
+        public enum WeekDays : byte
         {
             Monday = 1 << 0,
             Tuesday = 1 << 1,
@@ -16,7 +16,7 @@ namespace Assignment6
             Sunday = 1 << 6 
         }
 
-        public enum Seasons
+        public enum Seasons : byte
         {
             Fall, 
             Winter,  
@@ -24,7 +24,7 @@ namespace Assignment6
             Summer  
         }
 
-        public static void AddSeason(string str, Seasons season)
+        public static void AddSeason(string str, ref Seasons season)
         {
             str = str.ToLower();
             switch (str)
@@ -43,7 +43,7 @@ namespace Assignment6
                     break;
             }
         }
-        public static void AddWeekDays(string str,  WeekDays weekDays)
+        public static void AddWeekDays(string str, ref WeekDays weekDays)
         {
             str = str.ToLower();
 
@@ -80,11 +80,11 @@ namespace Assignment6
 
         public struct Time
         {
-            public int Hour { get; }
-            public int Minute { get; }
-            public int Second { get; }
+            public byte Hour { get; }
+            public byte Minute { get; }
+            public byte Second { get; }
 
-            public Time(int hour, int minute, int second)
+            public Time(byte hour, byte minute, byte second)
             {
                 Hour = hour;
                 Minute = minute;
@@ -94,12 +94,12 @@ namespace Assignment6
 
         public struct Schedule
         {
-            public WeekDays DaysOfWeek { get;}
-            public Seasons Quarter { get; }
+            public WeekDays DaysOfWeek;
+            public Seasons Quarter;
             public Time StartTime { get; }
-            public TimeSpan Duration { get; }
+            public TimeSpan Duration { get;}
 
-            public Schedule(int hours, int min, int sec)
+            public Schedule(byte hours, byte min, byte sec)
             {
                 DaysOfWeek = WeekDays.Monday | WeekDays.Tuesday | WeekDays.Wednesday | WeekDays.Thursday |
                              WeekDays.Friday;

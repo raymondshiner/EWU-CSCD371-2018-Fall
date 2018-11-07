@@ -12,7 +12,7 @@ namespace Assignment6.Tests
         {
             MyEnums.Schedule mySchedule = new MyEnums.Schedule();
 
-            MyEnums.AddWeekDays("Monday", mySchedule.DaysOfWeek);
+            MyEnums.AddWeekDays("Monday", ref mySchedule.DaysOfWeek);
 
             Assert.IsTrue(((mySchedule.DaysOfWeek & MyEnums.WeekDays.Monday) != 0));
         }
@@ -22,7 +22,7 @@ namespace Assignment6.Tests
         {
             MyEnums.Schedule mySchedule = new MyEnums.Schedule();
 
-            MyEnums.AddWeekDays("Tuesday Thursday", mySchedule.DaysOfWeek);
+            MyEnums.AddWeekDays("Tuesday Thursday", ref mySchedule.DaysOfWeek);
 
             Assert.IsTrue((mySchedule.DaysOfWeek & MyEnums.WeekDays.Tuesday) != 0);
             Assert.IsTrue((mySchedule.DaysOfWeek & MyEnums.WeekDays.Thursday) != 0);
@@ -33,7 +33,7 @@ namespace Assignment6.Tests
         {
             MyEnums.Schedule mySchedule = new MyEnums.Schedule();
 
-            MyEnums.AddSeason("fall", mySchedule.Quarter);
+            MyEnums.AddSeason("fall", ref mySchedule.Quarter);
 
             Assert.IsTrue(mySchedule.Quarter == MyEnums.Seasons.Fall);
         }
@@ -44,8 +44,7 @@ namespace Assignment6.Tests
             //MyEnums.Schedule mySchedule = new MyEnums.Schedule(12, 20, 0);
 
             int size = Marshal.SizeOf<MyEnums.Schedule>();
-
-            Assert.AreEqual(size, 16);
+            
             Assert.IsTrue(size <= 16);
         }
     }
