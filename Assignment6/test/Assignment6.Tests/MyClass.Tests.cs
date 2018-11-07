@@ -39,9 +39,29 @@ namespace Assignment6.Tests
         }
 
         [TestMethod]
-        public void PassClassToMethod_ChangePropertyValue_OriginalClassUnchanged()
+        public void PassClassToMethod_CreateNewReference_OriginalClassChanged()
         {
+            MyClass myClass = new MyClass();
+            MyClass checkClass = myClass;
 
+            myClass.ClassInt = 10;
+
+            MyClass.MakeNewInstanceOfClass(ref myClass);
+
+            Assert.IsFalse(myClass == checkClass);
+        }
+
+        [TestMethod]
+        public void ChangeIStructInterfaceStructIntToZero_CastStructToInterfaceAndPassIn_ReturnsTrue()
+        {
+            MyStruct myStruct = new MyStruct();
+            myStruct.StructInt = 10;
+
+            IStructInterface myInterface = (IStructInterface) myStruct;
+
+            MyClass.ChangeIStructInterfaceStructIntToZero(ref myInterface);
+
+            Assert.AreEqual(myInterface.StructInt, 0);
         }
     }
 }

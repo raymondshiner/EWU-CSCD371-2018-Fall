@@ -21,12 +21,17 @@ namespace Assignment6
             myStruct.StructInt = 0;
         }
 
-        public static void ChangeIStructInterfaceStructIntToZero(IStructInterface myStructInterface)
+        public static void ChangeIStructInterfaceStructIntToZero(ref IStructInterface myStructInterface)
         {
             myStructInterface.StructInt = 0;
         }
 
-        
+
+        public static void MakeNewInstanceOfClass(ref MyClass myClass)
+        {
+            MyClass newC = new MyClass();
+            myClass = newC;
+        }
     }
 
     public struct MyStruct : IStructInterface
