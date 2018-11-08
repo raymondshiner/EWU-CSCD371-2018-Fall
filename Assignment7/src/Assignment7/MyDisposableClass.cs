@@ -6,11 +6,16 @@ namespace Assignment7
     {
         private bool Disposed { get; set; }
 
-        public static int InstantiationCount { get; set; }
+        public static int InstantiationCount { get; private set; }
 
         public MyDisposableClass()
         {
             InstantiationCount++;
+        }
+
+        public static void ResetInstantiationCount()
+        {
+            InstantiationCount = 0;
         }
 
         public void Dispose()
@@ -29,9 +34,18 @@ namespace Assignment7
             Dispose();
         }
 
-        public static void MakeAMyDisposableClassObjectForGarbageCollector()
+        public static void MakeSomeGarbageForGarbageCollector()
         {
             MyDisposableClass someClass = new MyDisposableClass();
+            MyDisposableClass someClass2 = new MyDisposableClass();
+            MyDisposableClass someClass3 = new MyDisposableClass();
+
+            //intentionally leaving these objects for the GC to pick up.
+        }
+
+        public static void Main()
+        {
+
         }
     }
 }
