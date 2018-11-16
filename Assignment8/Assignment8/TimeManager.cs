@@ -3,7 +3,7 @@ using System.Windows;
 
 namespace Assignment8
 {
-    public class TimeManager
+    public class TimeManager : IDateTime
     {
         public Action StartStopButtonClick { get; set; }
         public Action DeleteButtonClick { get; set; }
@@ -21,6 +21,11 @@ namespace Assignment8
         public static DateTime Now()
         {
             return DateTime.Now;
+        }
+
+        DateTime IDateTime.Now()
+        {
+            return Now();
         }
     }
 }
