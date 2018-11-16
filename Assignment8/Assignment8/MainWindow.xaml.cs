@@ -30,26 +30,37 @@ namespace Assignment8
         //private static System.Timers.Timer timer;
         private readonly DispatcherTimer _timer;
         private DateTime StartTime { get; set; }
-        private bool TaskIsRunning { get; set; }
+        private bool ThisClickIsStart { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
 
-            _timer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(1)};
+            _timer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(0.1)}; //did 0.1 second for accuracy and response time
             _timer.Tick += TimerOnTick;
             _timer.Start();
             TaskRunningMessage.Content = "Press Start to Start a Task";
+            ThisClickIsStart = false;
 
-           // var manager = new TimeManager();
-           // manager.EntryCompleted += Start_OnClick;
+            var manager = new TimeManager();
+            manager.StartStopButtonClick += StartStop_OnClick_SetCurrentClick;
+            manager.StartStopButtonClick += Stop_OnClick_DisplayTaskFinished;
+            manager.StartStopButtonClick += Stop_OnClick_EndTask;
+            manager.StartStopButtonClick += Start_OnClick_DisplayTaskRunning;
+            manager.StartStopButtonClick += Start_OnClick_StartTask;
 
-            Start.Click += Start_OnClick_DisplayTaskRunning;
-            Start.Click += Start_OnClick_StartTask;
-            Stop.Click += Stop_OnClick_DisplayTaskFinished;
-            Stop.Click += Stop_OnClick_EndTask;
+
+            StartStop.Click += manager.RaiseEventStartStop;
 
             Delete.Click += Delete_OnClick_DeleteCurrentItem;
+        }
+
+        private void StartStop_OnClick_SetCurrentClick()
+        {
+            if (ThisClickIsStart)
+                ThisClickIsStart = false;
+            else
+                ThisClickIsStart = true;
         }
 
         private void Delete_OnClick_DeleteCurrentItem(object sender, RoutedEventArgs e)
@@ -57,36 +68,34 @@ namespace Assignment8
             ListBox.Items.Remove(ListBox.SelectedItem);
         }
 
-        private void Stop_OnClick_DisplayTaskFinished(object sender, RoutedEventArgs e)
+        private void Stop_OnClick_DisplayTaskFinished()
         {
-            if (TaskIsRunning)
+            if (!ThisClickIsStart)
             {
                 TaskRunningMessage.Content = "Task Completed - Start Another Task";
             }
         }
 
-        private void Start_OnClick_DisplayTaskRunning(object sender, RoutedEventArgs e)
+        private void Start_OnClick_DisplayTaskRunning()
         {
-            if (!TaskIsRunning)
+            if (ThisClickIsStart)
             {
                 TaskRunningMessage.Content = $"Task Started at {DateTime.Now:hh:mm:ss tt} is Running";
             }
         }
 
-        private void Start_OnClick_StartTask(object sender, RoutedEventArgs e)
+        private void Start_OnClick_StartTask()
         {
-            if (!TaskIsRunning)
+            if (ThisClickIsStart)
             {
-                TaskIsRunning = true;
                 StartTime = DateTime.Now;
             }
         }
-        private void Stop_OnClick_EndTask(object sender, RoutedEventArgs e)
+        private void Stop_OnClick_EndTask()
         {
-            if (TaskIsRunning)
+            if (!ThisClickIsStart)
             {
                 ListBox.Items.Add($"Task was completed at {DateTime.Now:hh:mm:ss tt}");
-                TaskIsRunning = false;
             }
         }
 

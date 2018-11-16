@@ -1,14 +1,22 @@
 ﻿using System;
+using System.Windows;
 
 namespace Assignment8
 {
     public class TimeManager
     {
-        public Action EntryCompleted { get; set; }
 
-        public void RaiseEvent()
+        public Action StartStopButtonClick { get; set; }
+        public Action DeleteButtonClick { get; set; }
+
+        public void RaiseEventStartStop(object sender, RoutedEventArgs routedEventArgs)
         {
-            EntryCompleted?.Invoke();
+            StartStopButtonClick?.Invoke();
+        }
+
+        public void RaiseEventDelete(object sender, RoutedEventArgs e)
+        {
+            DeleteButtonClick?.Invoke();
         }
     }
 }
