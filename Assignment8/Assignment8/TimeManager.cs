@@ -5,7 +5,6 @@ namespace Assignment8
 {
     public class TimeManager
     {
-
         public Action StartStopButtonClick { get; set; }
         public Action DeleteButtonClick { get; set; }
 
@@ -17,6 +16,11 @@ namespace Assignment8
         public void RaiseEventDelete(object sender, RoutedEventArgs e)
         {
             DeleteButtonClick?.Invoke();
+        }
+
+        public static DateTime Now()
+        {
+            return DateTime.Now;
         }
     }
 }

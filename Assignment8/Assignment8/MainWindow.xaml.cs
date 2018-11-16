@@ -80,7 +80,7 @@ namespace Assignment8
         {
             if (ThisClickIsStart)
             {
-                TaskRunningMessage.Content = $"Task Started at {DateTime.Now:hh:mm:ss tt} is Running";
+                TaskRunningMessage.Content = $"Task Started at {TimeManager.Now():hh:mm:ss tt} is Running";
             }
         }
 
@@ -88,25 +88,22 @@ namespace Assignment8
         {
             if (ThisClickIsStart)
             {
-                StartTime = DateTime.Now;
+                StartTime = TimeManager.Now();
             }
         }
         private void Stop_OnClick_EndTask()
         {
             if (!ThisClickIsStart)
             {
-                ListBox.Items.Add($"Task was completed at {DateTime.Now:hh:mm:ss tt}");
+                ListBox.Items.Add($"Task was completed at {TimeManager.Now():hh:mm:ss tt}");
             }
         }
 
         private void TimerOnTick(object sender, EventArgs e)
         {
-            Clock.Content = $"{DateTime.Now:hh:mm:ss tt}";
+            Clock.Content = $"{TimeManager.Now():hh:mm:ss tt}";
         }
-
         
-
-        //    Dispatcher.Invoke(() => Clock.Content = $"{e.SignalTime:hh:mm:ss tt}");
         
 
     }
