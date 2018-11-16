@@ -48,11 +48,12 @@ namespace Assignment8
             manager.StartStopButtonClick += Stop_OnClick_EndTask;
             manager.StartStopButtonClick += Start_OnClick_DisplayTaskRunning;
             manager.StartStopButtonClick += Start_OnClick_StartTask;
+            manager.DeleteButtonClick += Delete_OnClick_DeleteCurrentItem;
 
 
             StartStop.Click += manager.RaiseEventStartStop;
 
-            Delete.Click += Delete_OnClick_DeleteCurrentItem;
+            Delete.Click += manager.RaiseEventDelete;
         }
 
         private void StartStop_OnClick_SetCurrentClick()
@@ -63,7 +64,7 @@ namespace Assignment8
                 ThisClickIsStart = true;
         }
 
-        private void Delete_OnClick_DeleteCurrentItem(object sender, RoutedEventArgs e)
+        private void Delete_OnClick_DeleteCurrentItem()
         {
             ListBox.Items.Remove(ListBox.SelectedItem);
         }
