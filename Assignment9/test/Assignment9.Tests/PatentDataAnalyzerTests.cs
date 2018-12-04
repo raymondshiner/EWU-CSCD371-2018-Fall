@@ -72,5 +72,14 @@ namespace Assignment9.Tests
                 randomList = randomList.Randomize(); //make new random order
             }
         }
+
+        [TestMethod]
+        public void LocationsWithInventors_ReturnsExpectedList()
+        {
+            string expectedOutput = "PA-USA, NC-USA, NY-USA, Northumberland-UK, IL-USA";
+            string actualOutput = PatentDataAnalyzer.LocationsWithInventors();
+
+            Assert.AreEqual(expectedOutput, actualOutput);
+        }
     }
 }

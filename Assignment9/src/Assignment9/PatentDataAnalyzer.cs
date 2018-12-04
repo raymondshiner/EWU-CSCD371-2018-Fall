@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace Assignment9
 {
     public static class PatentDataAnalyzer
     {
+        private static IEnumerable<object> thePatents;
+
         public static List<string> InventorNames(string country)
         {
             IEnumerable<string> inventors =
@@ -30,7 +34,7 @@ namespace Assignment9
         public static string LocationsWithInventors()
         {
             IEnumerable<string> Locations =
-                PatentData.Inventors.Select(inventor => $"{inventor.City}-{inventor.Country}").Distinct().ToArray();
+                PatentData.Inventors.Select(inventor => $"{inventor.State}-{inventor.Country}").Distinct().ToArray();
 
             return string.Join(", ", Locations);
         }
